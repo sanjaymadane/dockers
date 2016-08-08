@@ -22,6 +22,8 @@ ENV AUTH=yes \
 
 RUN npm config set python /usr/bin/python2
 
+RUN npm install pm2 -g
+
 COPY run_arm.sh set_mongodb_password.sh /
 EXPOSE 27017 28017
 ENTRYPOINT ["/run_arm.sh"]

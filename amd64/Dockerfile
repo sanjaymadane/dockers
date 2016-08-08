@@ -10,3 +10,5 @@ RUN apt-get update \
      node-gyp \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
+
+RUN npm install pm2 -g
