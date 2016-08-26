@@ -6,7 +6,10 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
      build-essential \
      libicu-dev \
+     curl \
      nodejs \
      node-gyp \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
+
+RUN npm install pm2 -g
