@@ -14,13 +14,17 @@ RUN pacman -Syy \
 
 VOLUME /data/db
 
-ENV AUTH=no \
+ENV AUTH=yes \
   JOURNALING=yes \
   MONGODB_USER=admin \
   MONGODB_PASS=password \
-  MONGODB_DATABASE=admin \
-  STORAGE_ENGINE=mmapv1
+  MONGODB_DATABASE=admin
 
 RUN npm config set python /usr/bin/python2
 
 RUN npm install -g pm2
+
+COPY run_arm.sh set_mongodb_password.sh /
+EXPOSE 27017 28017
+ENTRYPOINT ["/run_arm.sh"]
+CMD ["mongod"]
